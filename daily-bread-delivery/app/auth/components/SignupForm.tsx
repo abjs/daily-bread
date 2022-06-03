@@ -36,11 +36,11 @@ export const SignupForm = (props: SignupFormProps) => {
 				>
 					<LabeledTextField name="name" label="Name" placeholder="Name" />
 					<LabeledTextField name="email" label="Email" placeholder="Email" />
-					<LabeledTextField name="type" label="" placeholder="phone" labelLeft="+91" />
+					<LabeledTextField name="phone" label="" placeholder="phone" labelLeft="+91" />
 					<LabeledTextField name="type" label="type" placeholder="type"  />
 					<LabeledTextField name="organizationId" label="organizationId" placeholder="organizationId"  />
-					<LabeledTextField name="organizationId" label="organizationId" placeholder="organizationId"  />
-          <LabeledTextField name="address" label="address" placeholder="address" labelLeft="+91" />
+					<LabeledTextField name="organizationName" label="organizationName" placeholder="organizationName"  />
+          <LabeledTextField name="address" label="address" placeholder="address" />
           <LabeledTextField name="city" label="city" placeholder="city" />
           <LabeledTextField name="state" label="state" placeholder="state" />
           <LabeledTextField name="country" label="country" placeholder="country" />

@@ -13,7 +13,6 @@ import "app/core/styles/index.css";
 
 import { NextUIProvider } from "@nextui-org/react";
 
-import { NextUIProvider } from "@nextui-org/react";
 
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
