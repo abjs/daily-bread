@@ -1,5 +1,5 @@
 {
-  "name": "daily-bread-admin",
+  "name": "daily-bread-recipient",
   "version": "1.0.0",
   "scripts": {
     "dev": "blitz dev",
@@ -9,19 +9,31 @@
     "lint": "eslint --ignore-path .gitignore --ext .js,.ts,.tsx .",
     "test": "jest",
     "test:watch": "jest --watch",
-    "prepare": "husky install"
+    "prepare": "husky install",
+    "ps": "blitz prisma studio",
+    "pm": "blitz prisma migrate dev",
+    "pd": "blitz prisma migrate deploy",
+    "pg": "blitz codegen"
   },
   "prisma": {
     "schema": "db/schema.prisma"
   },
   "prettier": {
-    "semi": false,
-    "printWidth": 100
+    "printWidth": 100,
+    "singleQuote": true,
+    "trailingComma": "all",
+    "bracketSpacing": true,
+    "arrowParens": "always",
+    "endOfLine": "auto",
+    "tabWidth": 4,
+    "useTabs": true,
+    "semi": true
   },
   "lint-staged": {
     "*.{js,ts,tsx}": [
       "eslint --fix"
-    ]
+    ],
+    "**/*": "prettier --write --ignore-unknown"
   },
   "dependencies": {
     "@prisma/client": "3.14.0",
@@ -49,5 +61,10 @@
     "prisma": "3.14.0",
     "typescript": "~4.5"
   },
-  "private": true
+  "private": true,
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    }
+  }
 }
