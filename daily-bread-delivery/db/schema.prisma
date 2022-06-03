@@ -10,8 +10,6 @@ generator client {
     provider = "prisma-client-js"
 }
 
-// --------------------------------------
-
 model User {
     id               Int      @id @default(autoincrement())
     createdAt        DateTime @default(now())
@@ -34,7 +32,15 @@ model User {
 
     tokens   Token[]
     sessions Session[]
+    Donation Donation[]
     @@unique([email, role])
+}
+
+enum Role {
+    USER
+    ADMIN
+    DELIVERY
+    RECIPIENT
 }
 
 model Session {
@@ -69,16 +75,28 @@ model Token {
     @@unique([hashedToken, type])
 }
 
-// NOTE: It's highly recommended to use an enum for the token type
-//       but enums only work in Postgres.
-//       See: https://blitzjs.com/docs/database-overview#switch-to-postgre-sql
-// enum TokenType {
-//   RESET_PASSWORD
-// }
+model Donation {
+    id        Int            @id @default(autoincrement())
+    createdAt DateTime       @default(now())
+    updatedAt DateTime       @updatedAt
+    user      User?          @relation(fields: [id], references: [id])
+    foodItem  String
+    quantity  Int
+    address   String
+    city      String
+    state     String         @default("KERALA")
+    country   String         @default("INDIA")
+    pinCode   String
+    pickupBy  String
+    status    DonationStatus @default(INPROGRESS)
+    comments  String?
+}
 
-enum Role {
-    USER
-    ADMIN
-    DELIVERY
-    RECIPIENT
+enum DonationStatus {
+    INPROGRESS
+    APPROVED
+    REJECTED
+    COMPLETED
+    ONTHEWAY
+    DELIVERED
 }
