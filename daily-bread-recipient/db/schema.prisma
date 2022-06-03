@@ -30,7 +30,7 @@ model User {
     country          String?  @default("INDIA")
     pinCode          String?
 
-    role String @default("USER")
+    role Role @default(USER)
 
     tokens   Token[]
     sessions Session[]
@@ -75,3 +75,10 @@ model Token {
 // enum TokenType {
 //   RESET_PASSWORD
 // }
+
+enum Role {
+    USER
+    ADMIN
+    DELIVERY
+    RECIPIENT
+}
