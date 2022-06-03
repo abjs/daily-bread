@@ -1,8 +1,9 @@
 import { Suspense } from 'react';
-import {  Link, BlitzPage, useMutation, Routes } from 'blitz';
+import { Link, BlitzPage, useMutation, Routes } from 'blitz';
 import Layout from 'app/core/layouts/Layout';
 import { useCurrentUser } from 'app/core/hooks/useCurrentUser';
 import logout from 'app/auth/mutations/logout';
+import { Button } from '@nextui-org/react';
 
 /*
  * This file is just for a pleasant getting started page for your new app.
@@ -29,6 +30,9 @@ const UserInfo = () => {
 					<br />
 					User role: <code>{currentUser.role}</code>
 				</div>
+				<Link href={Routes.DonationsPage()}>
+					<Button>Donate Now</Button>
+				</Link>
 			</>
 		);
 	} else {

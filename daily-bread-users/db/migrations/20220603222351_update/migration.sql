@@ -16,7 +16,7 @@ CREATE TABLE `User` (
     `state` VARCHAR(191) NULL DEFAULT 'KERALA',
     `country` VARCHAR(191) NULL DEFAULT 'INDIA',
     `pinCode` VARCHAR(191) NULL,
-    `role` ENUM('USER', 'ADMIN', 'DELIVERY', 'RECIPIENT') NOT NULL DEFAULT 'USER',
+    `role` VARCHAR(191) NOT NULL DEFAULT 'USER',
 
     UNIQUE INDEX `User_email_role_key`(`email`, `role`),
     PRIMARY KEY (`id`)
@@ -54,8 +54,30 @@ CREATE TABLE `Token` (
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
+-- CreateTable
+CREATE TABLE `Donation` (
+    `id` INTEGER NOT NULL AUTO_INCREMENT,
+    `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
+    `updatedAt` DATETIME(3) NOT NULL,
+    `foodItem` VARCHAR(191) NOT NULL,
+    `quantity` INTEGER NOT NULL,
+    `address` VARCHAR(191) NOT NULL,
+    `city` VARCHAR(191) NOT NULL,
+    `state` VARCHAR(191) NOT NULL DEFAULT 'KERALA',
+    `country` VARCHAR(191) NOT NULL DEFAULT 'INDIA',
+    `pinCode` VARCHAR(191) NOT NULL,
+    `pickupBy` INTEGER NOT NULL,
+    `status` ENUM('INPROGRESS', 'APPROVED', 'REJECTED', 'COMPLETED', 'ONTHEWAY', 'DELIVERED') NOT NULL DEFAULT 'INPROGRESS',
+    `comments` VARCHAR(191) NULL,
+
+    PRIMARY KEY (`id`)
+) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+
 -- AddForeignKey
 ALTER TABLE `Session` ADD CONSTRAINT `Session_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE SET NULL ON UPDATE CASCADE;
 
 -- AddForeignKey
 ALTER TABLE `Token` ADD CONSTRAINT `Token_userId_fkey` FOREIGN KEY (`userId`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
+
+-- AddForeignKey
+ALTER TABLE `Donation` ADD CONSTRAINT `Donation_id_fkey` FOREIGN KEY (`id`) REFERENCES `User`(`id`) ON DELETE RESTRICT ON UPDATE CASCADE;
