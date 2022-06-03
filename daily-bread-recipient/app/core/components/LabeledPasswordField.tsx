@@ -3,7 +3,7 @@ import { useField, UseFieldConfig } from 'react-final-form';
 
 import { Input } from '@nextui-org/react';
 
-export interface LabeledTextFieldProps extends ComponentPropsWithoutRef<typeof Input> {
+export interface LabeledPasswordFieldProps extends ComponentPropsWithoutRef<typeof Input> {
 	/** Field name. */
 	name: string;
 	/** Field label. */
@@ -15,7 +15,7 @@ export interface LabeledTextFieldProps extends ComponentPropsWithoutRef<typeof I
 	fieldProps?: UseFieldConfig<string>;
 }
 
-export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldProps>(
+export const LabeledPasswordField = forwardRef<HTMLInputElement, LabeledPasswordFieldProps>(
 	({ name, label, placeholder, outerProps, fieldProps, labelProps, ...props }, ref) => {
 		const {
 			input,
@@ -34,8 +34,9 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
 		return (
 			<div {...outerProps}>
 				{/* <label {...labelProps}> */}
-				<Input
-					labelPlaceholder={label}
+				{/* @ts-ignore */}
+
+				<Input.Password
 					placeholder={placeholder}
 					clearable
 					{...input}
@@ -55,4 +56,4 @@ export const LabeledTextField = forwardRef<HTMLInputElement, LabeledTextFieldPro
 	},
 );
 
-export default LabeledTextField;
+export default LabeledPasswordField;
