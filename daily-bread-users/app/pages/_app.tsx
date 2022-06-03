@@ -11,17 +11,21 @@ import LoginForm from "app/auth/components/LoginForm"
 
 import "app/core/styles/index.css";
 
+import { NextUIProvider } from "@nextui-org/react";
+
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
-    <ErrorBoundary
-      FallbackComponent={RootErrorFallback}
-      onReset={useQueryErrorResetBoundary().reset}
-    >
-      {getLayout(<Component {...pageProps} />)}
-    </ErrorBoundary>
-  )
+    <NextUIProvider>
+      <ErrorBoundary
+        FallbackComponent={RootErrorFallback}
+        onReset={useQueryErrorResetBoundary().reset}
+      >
+        {getLayout(<Component {...pageProps} />)}
+      </ErrorBoundary>
+    </NextUIProvider>
+  );
 }
 
 function RootErrorFallback({ error, resetErrorBoundary }: ErrorFallbackProps) {
