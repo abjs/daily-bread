@@ -4,11 +4,21 @@ CREATE TABLE `User` (
     `createdAt` DATETIME(3) NOT NULL DEFAULT CURRENT_TIMESTAMP(3),
     `updatedAt` DATETIME(3) NOT NULL,
     `name` VARCHAR(191) NULL,
+    `phone` VARCHAR(191) NULL,
     `email` VARCHAR(191) NOT NULL,
+    `type` VARCHAR(191) NULL DEFAULT 'INDIVIDUAL',
+    `organizationId` VARCHAR(191) NULL,
+    `organizationName` VARCHAR(191) NULL,
     `hashedPassword` VARCHAR(191) NULL,
+    `totalMembers` INTEGER NULL,
+    `address` VARCHAR(191) NULL,
+    `city` VARCHAR(191) NULL,
+    `state` VARCHAR(191) NULL DEFAULT 'KERALA',
+    `country` VARCHAR(191) NULL DEFAULT 'INDIA',
+    `zip` VARCHAR(191) NULL,
     `role` VARCHAR(191) NOT NULL DEFAULT 'USER',
 
-    UNIQUE INDEX `User_email_key`(`email`),
+    UNIQUE INDEX `User_email_role_key`(`email`, `role`),
     PRIMARY KEY (`id`)
 ) DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
