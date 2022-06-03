@@ -30,7 +30,7 @@ model User {
     country          String?  @default("INDIA")
     pinCode          String?
 
-    role String @default("USER")
+    role Role @default(USER)
 
     tokens   Token[]
     sessions Session[]
@@ -77,6 +77,7 @@ model Token {
 //   RESET_PASSWORD
 // }
 
+<<<<<<< HEAD
 model Donation {
     id        Int            @id @default(autoincrement())
     createdAt DateTime       @default(now())
@@ -101,4 +102,11 @@ enum DonationStatus {
     COMPLETED
     ONTHEWAY
     DELIVERED
+=======
+enum Role {
+    USER
+    ADMIN
+    DELIVERY
+    RECIPIENT
+>>>>>>> c72765f1b4e34f2068edbc0527f691863736a8e6
 }

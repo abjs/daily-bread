@@ -3,7 +3,10 @@ import { Link, BlitzPage, useMutation, Routes } from 'blitz';
 import Layout from 'app/core/layouts/Layout';
 import { useCurrentUser } from 'app/core/hooks/useCurrentUser';
 import logout from 'app/auth/mutations/logout';
+<<<<<<< HEAD
 import { Button } from '@nextui-org/react';
+=======
+>>>>>>> c72765f1b4e34f2068edbc0527f691863736a8e6
 
 /*
  * This file is just for a pleasant getting started page for your new app.

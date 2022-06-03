@@ -17,3 +17,8 @@
 .description {
   @apply text-center;
 }
+
+.form div {
+	@apply w-full;
+}
+
