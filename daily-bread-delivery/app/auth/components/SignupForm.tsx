@@ -13,7 +13,7 @@ export const SignupForm = (props: SignupFormProps) => {
 	const [signupMutation] = useMutation(signup);
 
 	return (
-		<div className="flex flex-col justify-center items-center h-screen">
+		<div className="h-screen" style={{maxWidth:"500px", margin: "10px auto"}}>
 			<div>
 				<h1>Create an Account</h1>
 				<Form
