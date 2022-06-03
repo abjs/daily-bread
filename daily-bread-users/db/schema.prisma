@@ -17,12 +17,14 @@ model User {
   createdAt      DateTime @default(now())
   updatedAt      DateTime @updatedAt
   name           String?
-  email          String   @unique
+  phone          String?
+  email          String
   hashedPassword String?
   role           String   @default("USER")
 
   tokens   Token[]
   sessions Session[]
+  @@unique([email, role])
 }
 
 model Session {
