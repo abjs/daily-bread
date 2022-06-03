@@ -13,17 +13,21 @@ import "app/core/styles/index.css";
 
 import { NextUIProvider } from "@nextui-org/react";
 
+import { NextUIProvider } from "@nextui-org/react";
+
 export default function App({ Component, pageProps }: AppProps) {
   const getLayout = Component.getLayout || ((page) => page)
 
   return (
     <NextUIProvider>
-      <ErrorBoundary
-        FallbackComponent={RootErrorFallback}
-        onReset={useQueryErrorResetBoundary().reset}
-      >
-        {getLayout(<Component {...pageProps} />)}
-      </ErrorBoundary>
+      <NextUIProvider>
+        <ErrorBoundary
+          FallbackComponent={RootErrorFallback}
+          onReset={useQueryErrorResetBoundary().reset}
+        >
+          {getLayout(<Component {...pageProps} />)}
+        </ErrorBoundary>
+      </NextUIProvider>
     </NextUIProvider>
   );
 }
