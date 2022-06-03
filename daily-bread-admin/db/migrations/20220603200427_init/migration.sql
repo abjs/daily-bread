@@ -16,7 +16,7 @@ CREATE TABLE `User` (
     `state` VARCHAR(191) NULL DEFAULT 'KERALA',
     `country` VARCHAR(191) NULL DEFAULT 'INDIA',
     `pinCode` VARCHAR(191) NULL,
-    `role` ENUM('USER', 'ADMIN', 'DELIVERY', 'RECIPIENT') NOT NULL DEFAULT 'ADMIN',
+    `role` ENUM('USER', 'ADMIN', 'DELIVERY', 'RECIPIENT') NOT NULL DEFAULT 'USER',
 
     UNIQUE INDEX `User_email_role_key`(`email`, `role`),
     PRIMARY KEY (`id`)
