@@ -29,6 +29,11 @@ const UserInfo = () => {
 					<br />
 					User role: <code>{currentUser.role}</code>
 				</div>
+				<Link href={Routes.DonationsPage()}>
+					<a className="button small">
+						<strong>Delivery Request</strong>
+					</a>
+				</Link>
 			</>
 		);
 	} else {
