@@ -35,7 +35,6 @@ export default resolver.pipe(
 				city,
 				country,
 				organizationId,
-				pinCode,
 				organizationName,
 				state,
 				totalMembers,
