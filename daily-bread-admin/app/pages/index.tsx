@@ -32,6 +32,9 @@ const UserInfo = () => {
 				<Link href={Routes.DonationsPage()}>
 					<a className="button small">Donation List</a>
 				</Link>
+				<Link href={Routes.DeliveryStatusPage()}>
+					<a className="button small">Delivery Status</a>
+				</Link>
 			</>
 		);
 	} else {
