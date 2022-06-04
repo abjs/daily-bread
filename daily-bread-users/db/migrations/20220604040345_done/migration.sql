@@ -16,7 +16,7 @@ CREATE TABLE `User` (
     `state` VARCHAR(191) NULL DEFAULT 'KERALA',
     `country` VARCHAR(191) NULL DEFAULT 'INDIA',
     `pinCode` VARCHAR(191) NULL,
-    `role` VARCHAR(191) NOT NULL DEFAULT 'USER',
+    `role` ENUM('USER', 'ADMIN', 'DELIVERY', 'RECIPIENT') NOT NULL DEFAULT 'USER',
 
     UNIQUE INDEX `User_email_role_key`(`email`, `role`),
     PRIMARY KEY (`id`)
@@ -66,7 +66,7 @@ CREATE TABLE `Donation` (
     `state` VARCHAR(191) NOT NULL DEFAULT 'KERALA',
     `country` VARCHAR(191) NOT NULL DEFAULT 'INDIA',
     `pinCode` VARCHAR(191) NOT NULL,
-    `pickupBy` INTEGER NOT NULL,
+    `pickupBy` VARCHAR(191) NOT NULL,
     `status` ENUM('INPROGRESS', 'APPROVED', 'REJECTED', 'COMPLETED', 'ONTHEWAY', 'DELIVERED') NOT NULL DEFAULT 'INPROGRESS',
     `comments` VARCHAR(191) NULL,
 
