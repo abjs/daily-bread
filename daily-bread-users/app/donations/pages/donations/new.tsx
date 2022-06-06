@@ -1,14 +1,14 @@
-import { Link, useRouter, useMutation, BlitzPage, Routes } from 'blitz';
+import { Link, useRouter, useMutation, BlitzPage, Routes, useQuery, useParam } from 'blitz';
 import Layout from 'app/core/layouts/Layout';
 import createDonation from 'app/donations/mutations/createDonation';
 import { DonationForm, FORM_ERROR } from 'app/donations/components/DonationForm';
 import { CreateDonation } from 'app/donations/validations';
-import { useCurrentUser } from 'app/core/hooks/useCurrentUser';
 
-const NewDonationPage: BlitzPage = () => {
+export const NewDonationPage: BlitzPage = () => {
 	const router = useRouter();
 	const [createDonationMutation] = useMutation(createDonation);
-	const currentUser = useCurrentUser();
+	const userId = useParam('userId', 'number');
+
 	return (
 		<div>
 			<h1>Create New Donation</h1>
@@ -27,7 +27,7 @@ const NewDonationPage: BlitzPage = () => {
 					try {
 						const donation = await createDonationMutation({
 							...values,
-							id: currentUser?.id as number,
+							id: userId as number,
 						});
 						router.push(Routes.ShowDonationPage({ donationId: donation.id }));
 					} catch (error: any) {

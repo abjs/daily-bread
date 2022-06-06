@@ -1,5 +1,5 @@
 import { Suspense } from 'react';
-import { Head, Link, usePaginatedQuery, useRouter, BlitzPage, Routes } from 'blitz';
+import { Head, Link, usePaginatedQuery, useRouter, BlitzPage, Routes, useParam } from 'blitz';
 import Layout from 'app/core/layouts/Layout';
 import getDonations from 'app/donations/queries/getDonations';
 
@@ -40,6 +40,9 @@ export const DonationsList = () => {
 };
 
 const DonationsPage: BlitzPage = () => {
+	const {
+		query: { userId },
+	} = useRouter();
 	return (
 		<>
 			<Head>
@@ -48,7 +51,7 @@ const DonationsPage: BlitzPage = () => {
 
 			<div>
 				<p>
-					<Link href={Routes.NewDonationPage({ id: 'w' })}>
+					<Link href={Routes.NewDonationPage({ userId })}>
 						<a>Create Donation</a>
 					</Link>
 				</p>

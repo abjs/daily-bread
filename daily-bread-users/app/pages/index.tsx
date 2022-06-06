@@ -30,7 +30,11 @@ const UserInfo = () => {
 					<br />
 					User role: <code>{currentUser.role}</code>
 				</div>
-				<Link href={Routes.DonationsPage()}>
+				<Link
+					href={Routes.DonationsPage({
+						userId: currentUser.id,
+					})}
+				>
 					<Button>Donate Now</Button>
 				</Link>
 			</>
