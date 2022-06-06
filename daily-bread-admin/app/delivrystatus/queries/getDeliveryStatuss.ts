@@ -31,6 +31,9 @@ export default resolver.pipe(resolver.authorize(), async () => {
 				{
 					status: 'COMPLETED',
 				},
+				{
+					status: 'ONTHEWAY',
+				},
 			],
 		},
 	});
