@@ -20,7 +20,7 @@ export default resolver.pipe(resolver.authorize(), async () => {
 			},
 		},
 		where: {
-			status: 'APPROVED',
+			OR: [{ status: 'APPROVED' }, { status: 'ONTHEWAY' }],
 		},
 	});
 	return {

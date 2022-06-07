@@ -5,10 +5,11 @@ import { DonationForm, FORM_ERROR } from 'app/donations/components/DonationForm'
 import { CreateDonation } from 'app/donations/validations';
 
 export const NewDonationPage: BlitzPage = () => {
-	const router = useRouter();
 	const [createDonationMutation] = useMutation(createDonation);
-	const userId = useParam('userId', 'number');
-
+	const {
+		query: { userId },
+		push,
+	} = useRouter();
 	return (
 		<div>
 			<h1>Create New Donation</h1>
@@ -27,9 +28,9 @@ export const NewDonationPage: BlitzPage = () => {
 					try {
 						const donation = await createDonationMutation({
 							...values,
-							id: userId as number,
+							id: parseInt(userId as string),
 						});
-						router.push(Routes.ShowDonationPage({ donationId: donation.id }));
+						push(Routes.ShowDonationPage({ donationId: donation.id }));
 					} catch (error: any) {
 						console.error(error);
 						return {
